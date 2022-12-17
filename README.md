@@ -143,7 +143,15 @@ fputs(rcv,stdout);
 }
 printf("Client msg : ");
 }
-}
+} 
+
+
+
+
+
+
+
+
 
 ping -ping google.com  
 tcpdump - sudo tcpdump -D 
